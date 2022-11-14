@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useParticipants } from "../../hooks/useParticipants";
+import { AnimationLoading } from "../Animation.Loading/Index";
 import { FrameForLogoParticipants } from "../FrameForLogoParticipants/Index";
 import { PaginationTable } from "../PaginationTable/Index";
 import { ParticipantsLearnMoreButton } from "../ParticipantsLearnMoreButton/Index";
 
 export function ParticipantsTable() {
-  const { participants, wantedParticipant } = useParticipants();
+  const { isLoading, participants, wantedParticipant } = useParticipants();
   const [currentPage, setCurrentPage] = useState(1);
   const [participantsPerPage] = useState(17);
 
@@ -19,6 +20,7 @@ export function ParticipantsTable() {
 
   return (
     <div className="w-full flex flex-col items-end gap-2">
+      {isLoading && <AnimationLoading />}
       <table className="w-full overflow-y-aut border-spacing-2 bg-white text-blue-marine rounded-lg shadow-lg shadow-black/30">
         <tbody>
           {currentParticipants
