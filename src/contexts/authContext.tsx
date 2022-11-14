@@ -6,7 +6,7 @@ type AuthContextData = {
   user: User | null;
   signIn: (email: string, password: string) => Promise<boolean>;
   signOut(): void;
-  error: Error | null;
+  error: boolean;
   isLoading: boolean;
 };
 

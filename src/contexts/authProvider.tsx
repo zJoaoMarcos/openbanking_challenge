@@ -6,7 +6,7 @@ import { AuthContext } from "./authContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const auth = authApi();
 
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       setIsLoading(false);
       return true;
     }
-    setError(response);
+    setError(true);
     setIsLoading(false);
     return false;
   }

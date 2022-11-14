@@ -3,7 +3,7 @@ import { Text } from "../Text/Index";
 
 export function Footer() {
   return (
-    <footer className="w-full flex flex-col items-center py-4 gap-2 bg-blue-marine shadow-xl shadow-black/75">
+    <footer className="w-full relative flex flex-col items-center py-6 gap-2 bg-blue-marine shadow-xl shadow-black/75">
       <LogoWhite />
       <Text asChild>
         <a

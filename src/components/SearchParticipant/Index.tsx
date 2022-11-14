@@ -10,7 +10,7 @@ export function SearchParticipant() {
         <MagnifyingGlass size={24} color="#9e9e9e" />
       </TextInput.Icon>
       <TextInput.Input
-        placeholder="Pesquisar"
+        placeholder="Pesquisar..."
         onChange={(event) => {
           searchParticipant(event.target.value);
         }}

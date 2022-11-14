@@ -4,16 +4,17 @@ import { TextInput } from "../../components/TextInput/Index";
 import { useAuth } from "../../contexts/authProvider";
 import { AnimationLoading } from "../Animation.Loading/Index";
 import { Button } from "../Button/Index";
+import { Text } from "../Text/Index";
 
 export function FormLogin() {
-  const { signIn, isLoading } = useAuth();
+  const { signIn, isLoading, error } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
 
-    signIn(email, password);
+    await signIn(email, password);
   }
 
   return (
@@ -56,6 +57,11 @@ export function FormLogin() {
               />
             </TextInput.Root>
           </label>
+          {error && (
+            <Text className="text-2xs text-red-300">
+              E-mail ou senha incorreta
+            </Text>
+          )}
 
           <Button type="submit" className="mt-4">
             Entrar na plataforma

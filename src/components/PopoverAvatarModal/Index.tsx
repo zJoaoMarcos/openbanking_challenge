@@ -5,11 +5,11 @@ export function PopoverAvatarModal() {
   const { signOut } = useAuth();
 
   return (
-    <Popover.Portal>
-      <Popover.Content className="w-24 p-4 flex items-center justify-center rounded bg-gray-100 shadow shadow-black/40">
+    <Popover.Portal className="">
+      <Popover.Content className="w-20 md:w-24 p-4 flex items-center justify-center rounded bg-gray-100 shadow shadow-black/40">
         <button
           onClick={() => signOut()}
-          className="text-md text-blue-marine font-bold underline transition-colors hover:text-green-ocean"
+          className="text-xs md:text-md text-blue-marine font-bold underline transition-colors hover:text-green-ocean "
         >
           Sair
         </button>

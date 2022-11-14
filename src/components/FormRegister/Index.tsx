@@ -28,8 +28,10 @@ export function FormRegister() {
         email,
         password,
       })
-      .then((data) => navigate("/"))
-      .catch((err) => {
+      .then(() => {
+        navigate("/");
+      })
+      .catch(() => {
         setIsLoading(false);
         setError(true);
       });

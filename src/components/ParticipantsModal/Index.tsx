@@ -33,7 +33,7 @@ export function ParticipantsModal({
         </Dialog.Description>
         <div className="flex flex-col items-center justify-center gap-2 mt-6">
           <Heading className="text-md md:text-lg text-blue-marine">
-            AuthorisationServers
+            AuthorisationServer
           </Heading>
 
           <div className="w-full flex flex-col items-center gap-2 p-2 text-center bg-green-ocean/20 rounded border-2 border-dashed border-black/40">

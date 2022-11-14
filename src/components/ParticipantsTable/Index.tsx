@@ -11,9 +11,9 @@ export function ParticipantsTable() {
   const [participantsPerPage] = useState(17);
 
   const indexOfLastParticipant = currentPage * participantsPerPage;
-  const indexOfFirstPost = indexOfLastParticipant - participantsPerPage;
+  const indexOfFirstParticipant = indexOfLastParticipant - participantsPerPage;
   const currentParticipants = participants.slice(
-    indexOfFirstPost,
+    indexOfFirstParticipant,
     indexOfLastParticipant
   );
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -21,8 +21,8 @@ export function ParticipantsTable() {
   return (
     <div className="w-full flex flex-col items-end gap-2">
       {isLoading && <AnimationLoading />}
-      <table className="w-full overflow-y-aut border-spacing-2 bg-white text-blue-marine rounded-lg shadow-lg shadow-black/30">
-        <tbody>
+      <table className="w-full overflow-y-auto  bg-white text-blue-marine rounded-lg shadow-lg shadow-black/30">
+        <tbody className="divide-y divide-green-ocean">
           {currentParticipants
             .filter((participant) => {
               if (wantedParticipant == null) {
@@ -38,7 +38,7 @@ export function ParticipantsTable() {
             .map((participant, key) => {
               return (
                 <tr key={key}>
-                  <td className="p-3 text-center whitespace-nowrap border-b border-green-ocean/80">
+                  <td className="p-3 text-center whitespace-nowrap ">
                     <FrameForLogoParticipants
                       urlImage={
                         participant.AuthorisationServers[0]
@@ -48,11 +48,11 @@ export function ParticipantsTable() {
                     />
                   </td>
 
-                  <td className="text-2xs md:text-sm text-left py-2 border-b border-green-ocean/80">
+                  <td className="text-2xs md:text-sm text-left py-2">
                     {participant.OrganisationName}
                   </td>
 
-                  <td className="p-3 text-center whitespace-nowrap border-b border-green-ocean/80">
+                  <td className="p-3 text-center whitespace-nowrap">
                     <ParticipantsLearnMoreButton
                       AuthorisationServers={participant.AuthorisationServers}
                       OrganisationName={participant.OrganisationName}
