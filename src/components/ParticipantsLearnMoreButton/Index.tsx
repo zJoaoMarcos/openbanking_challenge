@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { Participants } from "../../hooks/useParticipants";
+import { Participants } from "../../types/User";
 import { Button } from "../Button/Index";
 import { ParticipantsModal } from "../ParticipantsModal/Index";
 
