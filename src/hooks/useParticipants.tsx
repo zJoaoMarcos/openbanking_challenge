@@ -7,25 +7,7 @@ import {
   useState,
 } from "react";
 import { api } from "../services/api";
-
-export interface Participants {
-  OrganizationId: string;
-  OrganisationName: string;
-  LegalEntityName: string;
-  AuthorisationServers: [
-    {
-      AuthorisationServerId: string;
-      ApiResources: [
-        {
-          ApiResourceId: string;
-          ApiFamilyType: string;
-        }
-      ];
-      CustomerFriendlyDescription: string;
-      CustomerFriendlyLogoUri: string;
-    }
-  ];
-}
+import { Participants } from "../types/User";
 
 interface ParticipantsProviderProps {
   children: ReactNode;
