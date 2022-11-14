@@ -1,7 +1,5 @@
-import * as Popover from "@radix-ui/react-popover";
-import { FrameForAvatarUser } from "../FrameForAvatarUser/Index";
 import { Logo } from "../Logo/Index";
-import { PopoverAvatarModal } from "../PopoverAvatarModal/Index";
+import { PopoverAvatar } from "../PopoverAvatar/Index";
 import { Text } from "../Text/Index";
 
 interface HeaderProps {
@@ -16,12 +14,7 @@ export function Header({ user }: HeaderProps) {
       <nav className="flex flex-row items-center gap-4">
         <Text className="text-xs text-blue-marine font-semibold">{user}</Text>
 
-        <Popover.Root>
-          <Popover.Trigger>
-            <FrameForAvatarUser />
-          </Popover.Trigger>
-          <PopoverAvatarModal />
-        </Popover.Root>
+        <PopoverAvatar />
       </nav>
     </header>
   );
