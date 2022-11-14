@@ -12,7 +12,10 @@ export function ParticipantsTable() {
 
   const indexOfLastParticipant = currentPage * participantsPerPage;
   const indexOfFirstParticipant = indexOfLastParticipant - participantsPerPage;
-  const currentParticipants = participants.slice(
+  const filteredParticipants = participants.filter((participant) =>
+    participant.LegalEntityName.toLocaleLowerCase().includes(wantedParticipant)
+  );
+  const currentParticipants = filteredParticipants.slice(
     indexOfFirstParticipant,
     indexOfLastParticipant
   );
@@ -23,44 +26,32 @@ export function ParticipantsTable() {
       {isLoading && <AnimationLoading />}
       <table className="w-full overflow-y-auto  bg-white text-blue-marine rounded-lg shadow-lg shadow-black/30">
         <tbody className="divide-y divide-green-ocean">
-          {currentParticipants
-            .filter((participant) => {
-              if (wantedParticipant == null) {
-                return participant;
-              } else if (
-                participant.LegalEntityName.toLocaleLowerCase().includes(
-                  wantedParticipant.toLocaleLowerCase()
-                )
-              ) {
-                return participant;
-              }
-            })
-            .map((participant, key) => {
-              return (
-                <tr key={key}>
-                  <td className="p-3 text-center whitespace-nowrap ">
-                    <FrameForLogoParticipants
-                      urlImage={
-                        participant.AuthorisationServers[0]
-                          .CustomerFriendlyLogoUri
-                      }
-                      alt={participant.OrganisationName}
-                    />
-                  </td>
+          {currentParticipants.map((participant, key) => {
+            return (
+              <tr key={key}>
+                <td className="p-3 text-center whitespace-nowrap ">
+                  <FrameForLogoParticipants
+                    urlImage={
+                      participant.AuthorisationServers[0]
+                        .CustomerFriendlyLogoUri
+                    }
+                    alt={participant.OrganisationName}
+                  />
+                </td>
 
-                  <td className="text-2xs md:text-sm text-left py-2">
-                    {participant.OrganisationName}
-                  </td>
+                <td className="text-2xs md:text-sm text-left py-2">
+                  {participant.OrganisationName}
+                </td>
 
-                  <td className="p-3 text-center whitespace-nowrap">
-                    <ParticipantsLearnMoreButton
-                      AuthorisationServers={participant.AuthorisationServers}
-                      OrganisationName={participant.OrganisationName}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
+                <td className="p-3 text-center whitespace-nowrap">
+                  <ParticipantsLearnMoreButton
+                    AuthorisationServers={participant.AuthorisationServers}
+                    OrganisationName={participant.OrganisationName}
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 

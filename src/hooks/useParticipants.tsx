@@ -16,7 +16,7 @@ interface ParticipantsProviderProps {
 interface ParticipantsContextData {
   isLoading: boolean;
   participants: Participants[];
-  wantedParticipant: string | null;
+  wantedParticipant: string;
   searchParticipant: (participant: string) => void;
 }
 
@@ -27,9 +27,7 @@ const ParticipantsContext = createContext<ParticipantsContextData>(
 export function TransactionsProvider({ children }: ParticipantsProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [participants, setParticipants] = useState<Participants[]>([]);
-  const [wantedParticipant, setWantedParticipant] = useState<string | null>(
-    null
-  );
+  const [wantedParticipant, setWantedParticipant] = useState<string>("");
 
   useEffect(() => {
     api
