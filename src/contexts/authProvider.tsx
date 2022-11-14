@@ -6,6 +6,8 @@ import { AuthContext } from "./authContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const auth = authApi();
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   async function signIn(email: string, password: string) {
+    setIsLoading(true);
     const response = await auth.signIn(email, password);
 
     if (response.user && response.token) {
@@ -28,8 +31,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       api.defaults.headers.common.Authorization = `Bearer ${response.token}`;
       sessionStorage.setItem("@TerosAuth:user", JSON.stringify(response.user));
       sessionStorage.setItem("@TerosAuth:token", response.token);
+      setIsLoading(false);
       return true;
     }
+    setError(response);
+    setIsLoading(false);
     return false;
   }
 
@@ -39,7 +45,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ signed: !!user, user, signIn, signOut, error, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );

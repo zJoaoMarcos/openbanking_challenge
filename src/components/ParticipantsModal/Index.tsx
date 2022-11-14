@@ -24,7 +24,7 @@ export function ParticipantsModal({
             urlImage={AuthorisationServers[0].CustomerFriendlyLogoUri}
             alt={OrganisationName}
           />
-          <Heading className="text-md md:text-xl text-green-ocean font-semibold">
+          <Heading className="text-md md:text-md text-green-ocean font-semibold">
             {OrganisationName}
           </Heading>
         </Dialog.Title>

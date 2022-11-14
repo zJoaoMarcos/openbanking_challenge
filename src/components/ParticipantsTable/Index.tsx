@@ -48,7 +48,7 @@ export function ParticipantsTable() {
                     />
                   </td>
 
-                  <td className="text-2xs md:text-sm text-left py-2 whitespace-nowrap border-b border-green-ocean/80">
+                  <td className="text-2xs md:text-sm text-left py-2 border-b border-green-ocean/80">
                     {participant.OrganisationName}
                   </td>
 

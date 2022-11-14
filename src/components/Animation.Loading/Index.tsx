@@ -6,7 +6,7 @@ export function AnimationLoading() {
     <div className="w-full">
       <Player
         src={animation}
-        style={{ width: "400px" }}
+        style={{ width: "290px" }}
         autoplay
         loop
         speed={1}

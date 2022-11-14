@@ -6,6 +6,8 @@ type AuthContextData = {
   user: User | null;
   signIn: (email: string, password: string) => Promise<boolean>;
   signOut(): void;
+  error: Error | null;
+  isLoading: boolean;
 };
 
 export const AuthContext = createContext<AuthContextData>(
