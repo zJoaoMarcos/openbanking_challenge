@@ -17,7 +17,7 @@ export function ParticipantsModal({
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
-      <Dialog.Content className="w-80 sm:w-[420px] h-[750px] md:w-[620px] flex flex-col justify-evenly bg-white py-2 sm:py-6 px-4 sm:px-8 gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg shadow-black/25">
+      <Dialog.Content className="w-80 sm:w-[420px] h-[600px] md:w-[620px] flex flex-col justify-evenly bg-white py-2 sm:py-6 px-4 sm:px-8 gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg shadow-black/25">
         <Dialog.Title className="flex flex-row items-center justify-start gap-4">
           <FrameForLogoParticipants
             urlImage={AuthorisationServers[0].CustomerFriendlyLogoUri}
@@ -44,12 +44,12 @@ export function ParticipantsModal({
                 <Text className="text-blue-marine text-sm md:text-md">
                   Api Resources
                 </Text>
-                <Text>
+                <Text className="text-2xs md:text-sm">
                   <b>ID:</b>{" "}
                   {AuthorisationServers[0].ApiResources[0].ApiResourceId}
                 </Text>
 
-                <Text>
+                <Text className="text-2xs md:text-sm">
                   <b>Family:</b>{" "}
                   {AuthorisationServers[0].ApiResources[0].ApiFamilyType}
                 </Text>
@@ -58,7 +58,7 @@ export function ParticipantsModal({
                   Discovery Endpoints
                 </Text>
 
-                <Text>
+                <Text className="text-2xs md:text-sm">
                   <b>ID:</b>{" "}
                   {
                     AuthorisationServers[0].ApiResources[0]
@@ -66,7 +66,7 @@ export function ParticipantsModal({
                   }
                 </Text>
 
-                <Text className="text-xs sm:text-sm">
+                <Text className="text-2xs md:text-sm">
                   {
                     AuthorisationServers[0].ApiResources[0]
                       .ApiDiscoveryEndpoints[0].ApiEndpoint
